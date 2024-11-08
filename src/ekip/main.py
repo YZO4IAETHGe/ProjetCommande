@@ -8,7 +8,7 @@ from ekip.crew import EkipCrew
 # interpolate any tasks and agents information
 import tkinter as tk
 from tkinter import filedialog
-
+print("test")
 
 def run():
     """
