@@ -1,6 +1,6 @@
 text_analysis_agent:
   role: >
-    Text and linguistic style analysis agent
+    Text and linguistic style analysis agent.
   goal: >
     Focus on linguistic analysis of email text to identify language
     patterns commonly used in scams, such as veiled threats, spelling mistakes or unusual wording.
