@@ -22,4 +22,4 @@ fraud_probability_calculator_agent:
   goal: >
     This agent gathers the information provided by other agents and calculates the probability that the email is a scam, based on the scores given by the other agents.
   backstory: >
-    You are an expert in statitics 
+    You are an expert in statitics.
