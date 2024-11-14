@@ -9,7 +9,7 @@ from ekip.tools.custom_tool import PDFReaderTool
 # Check our tools documentations for more information on how to use them
 from crewai_tools import PDFSearchTool
 tool = PDFReaderTool() #commentraire thomas
-
+llm=LLM(model="ollama/llama3.1", base_url="http://localhost:11434")
 @CrewBase
 class EkipCrew():
 	"""Ekip crew"""
@@ -17,7 +17,7 @@ class EkipCrew():
 	@agent
 	def text_analysis_agent(self) -> Agent:
 		return Agent(
-			llm=LLM(model="ollama/llama3.1", base_url="http://localhost:11434"),
+			llm=llm,
 			config=self.agents_config['text_analysis_agent'], # Example of custom tool, loaded on the beginning of file
 			verbose=True
 		)
@@ -25,7 +25,7 @@ class EkipCrew():
 	@agent
 	def link_verification_agent(self) -> Agent:
 		return Agent(
-			llm=LLM(model="ollama/llama3.1", base_url="http://localhost:11434"),
+			llm=llm,
 			config=self.agents_config['link_verification_agent'],
 			verbose=True
 
@@ -34,7 +34,7 @@ class EkipCrew():
 	@agent
 	def fraud_probability_calculator_agent(self) -> Agent:
 		return Agent(
-			llm=LLM(model="ollama/llama3.1", base_url="http://localhost:11434"),
+			llm=llm,
 			config=self.agents_config['fraud_probability_calculator_agent'],
 			verbose=True
 		)

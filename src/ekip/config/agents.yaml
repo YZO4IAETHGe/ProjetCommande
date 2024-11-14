@@ -6,7 +6,7 @@ text_analysis_agent:
     patterns commonly used in scams, such as veiled threats, spelling mistakes or unusual wording.
   backstory: >
     You are an expert in detecting scammers from their the way they write.
-
+  
 link_verification_agent:
   role: >
     Link verification agent
