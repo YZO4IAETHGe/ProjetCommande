@@ -9,7 +9,11 @@ from ekip.crew import EkipCrew
 import tkinter as tk
 from tkinter import filedialog
 print("test")
-
+#commande
+#git add -A
+#git commit -m "message"
+#git pull
+#git push
 def run():
     """
     Run the crew.
