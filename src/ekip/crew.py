@@ -9,7 +9,11 @@ from ekip.tools.custom_tool import PDFReaderTool
 # Check our tools documentations for more information on how to use them
 from crewai_tools import PDFSearchTool
 tool = PDFReaderTool() #commentraire thomas
+
+#Si chatgpt mettre en commentaire la ligne suivante et toute les ligne "llm" et ajouter la clé api dans le .env
 llm=LLM(model="ollama/llama3.1", base_url="http://localhost:11434")
+
+
 @CrewBase
 class EkipCrew():
 	"""Ekip crew"""
