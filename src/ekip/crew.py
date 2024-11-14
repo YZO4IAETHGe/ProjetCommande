@@ -8,7 +8,7 @@ from ekip.tools.custom_tool import PDFReaderTool
 
 # Check our tools documentations for more information on how to use them
 from crewai_tools import PDFSearchTool
-tool = PDFReaderTool()
+tool = PDFReaderTool() #commentraire thomas
 
 @CrewBase
 class EkipCrew():
