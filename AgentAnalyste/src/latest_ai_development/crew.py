@@ -19,7 +19,7 @@ class CustomerServiceCrew:
     def document_search_agent(self) -> Agent:
         """Agent for retrieving and analyzing documents."""
         return Agent(
-            llm=LLM(model="ollama/llama3.1", base_url="http://localhost:11434"),
+            #llm=LLM(model="ollama/llama3.1", base_url="http://localhost:11434"),
             config=self.agents_config['document_search_agent'],
             verbose=True
         )
@@ -28,7 +28,7 @@ class CustomerServiceCrew:
     def client_request_analysis_agent(self) -> Agent:
         """Agent for analyzing customer requests to understand their needs."""
         return Agent(
-            llm=LLM(model="ollama/llama3.1", base_url="http://localhost:11434"),
+            #llm=LLM(model="ollama/llama3.1", base_url="http://localhost:11434"),
             config=self.agents_config['client_request_analysis_agent'],
             verbose=True
         )
@@ -37,7 +37,7 @@ class CustomerServiceCrew:
     def response_formulation_agent(self) -> Agent:
         """Agent for formulating and refining responses based on retrieved information."""
         return Agent(
-            llm=LLM(model="ollama/llama3.1", base_url="http://localhost:11434"),
+            #llm=LLM(model="ollama/llama3.1", base_url="http://localhost:11434"),
             config=self.agents_config['response_formulation_agent'],
             verbose=True
         )
@@ -46,7 +46,7 @@ class CustomerServiceCrew:
     def quality_assurance_agent(self) -> Agent:
         """Agent for quality control to ensure accuracy and relevance in responses."""
         return Agent(
-            llm=LLM(model="ollama/llama3.1", base_url="http://localhost:11434"),
+            #llm=LLM(model="ollama/llama3.1", base_url="http://localhost:11434"),
             config=self.agents_config['quality_assurance_agent'],
             verbose=True
         )
@@ -99,7 +99,7 @@ class CustomerServiceCrew:
         )
 
     @crew
-    def customer_service_crew(self) -> Crew:
+    def crew(self) -> Crew:
         """Creates the Customer Service Crew for handling support requests."""
         return Crew(
             agents=self.agents,  # Agents are defined by @agent decorators
