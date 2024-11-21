@@ -22,7 +22,7 @@ class PDFSearchTool(BaseTool):
     )
 
     def _run(self, pdf_path: str, keyword: str) -> int:
-        reader= PdfReader(pdf_path)
+        reader= PdfReader(solution_path)
         for i, page in enumerate(reader.pages):
             text= page.extract_text()
             if keyword in text:

@@ -1,6 +1,7 @@
 analyze_request_task:
   description: >
-    Analyze the customer's query to determine the main issue and relevant keywords about radiator issues on the document retrieval from the mail located at {pdf_path} .
+    Analyze the customer's query to determine the main issue and relevant keywords about radiator 
+    issues on the document retrieval from the mail located at {pdf_path} .
   expected_output: >
     Extracted keywords about radiator issues and a summary of the customer's needs.
   agent: client_request_analysis_agent
@@ -14,7 +15,8 @@ filter_request_task:
 
 search_document_task:
   description: >
-    Search the document database for relevant documents based on the keywords and context provided by the analysis of the customer's request located at {solution_path} .
+    Search the document database for relevant documents based on the keywords and context provided 
+    by the analysis of the customer's request located at {solution_path} .
   expected_output: >
     A list of document references or sections that match the customer's issue.
   agent: document_search_agent
