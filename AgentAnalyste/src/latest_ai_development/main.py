@@ -18,7 +18,6 @@ def run():
 
     file_path = filedialog.askopenfilename(title="Sélectionnez un fichier")
     inputs = {
-        'topic': 'Wavestone IA',
         'pdf_path': file_path,
         'solution_path' : "Solution.pdf"
     }
