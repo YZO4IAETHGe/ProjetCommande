@@ -16,10 +16,14 @@ def run():
     root = tk.Tk()
     root.withdraw() 
 
-    file_path = filedialog.askopenfilename(title="Sélectionnez un fichier")
+    file_path = filedialog.askopenfilename(title="Sélectionnez un mail")
+    root = tk.Tk()
+    root.withdraw() 
+
+    sol_path = filedialog.askopenfilename(title="Sélectionnez le fichier des solutions")
     inputs = {
         'pdf_path': file_path,
-        'solution_path' : "Solution.pdf"
+        'solution_path' : sol_path
     }
     CustomerServiceCrew().crew().kickoff(inputs=inputs)
 

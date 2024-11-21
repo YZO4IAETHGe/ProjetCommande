@@ -65,7 +65,7 @@ class CustomerServiceCrew:
         """Task to filter the mail."""
         return Task(
             config=self.tasks_config['filter_request_task'],
-            tools=[],
+            tools=[pdf_reader_tool],
             agent=self.client_request_filter_agent())
 
     @task
@@ -73,7 +73,7 @@ class CustomerServiceCrew:
         """Task to analyze the customer's query for main issues and keywords."""
         return Task(
             config=self.tasks_config['analyze_request_task'],
-            tools=[],
+            tools=[pdf_reader_tool],
             agent=self.client_request_analysis_agent(),
             context=[self.analyze_filter_task()]
         )
