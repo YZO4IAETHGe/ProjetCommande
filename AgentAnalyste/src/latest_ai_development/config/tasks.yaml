@@ -1,6 +1,6 @@
 analyze_request_task:
   description: >
-    Analyze the customer's query to determine the main issue and relevant keywords about radiator 
+    Analyze the customer's query to determine the main issue and relevant keywords about radiator
     issues on the document retrieval from the mail located at {pdf_path} .
   expected_output: >
     Extracted keywords about radiator issues and a summary of the customer's needs.
@@ -8,7 +8,8 @@ analyze_request_task:
 
 filter_request_task:
   description: >
-    Analyze the email to determine if it describes an issue encountered by the customer (SAV-related) or if it is unrelated. Indicate whether it is an SAV email or not.
+    Analyze the email to determine if it describes an issue encountered by the customer (SAV-related) or if
+    it is unrelated. Indicate whether it is an SAV email or not.
   expected_output: >
     Return only one word: SAV or notSAV
   agent: client_request_filter_agent
@@ -18,7 +19,7 @@ search_document_task:
     Search the document database for relevant documents based on the keywords and context provided 
     by the analysis of the customer's request located at {solution_path} .
   expected_output: >
-    A list of document references or sections that match the customer's issue.
+    A list of document references or sections that match the customer's issue from {solution_path}.
   agent: document_search_agent
 
 retrieve_document_content_task:
