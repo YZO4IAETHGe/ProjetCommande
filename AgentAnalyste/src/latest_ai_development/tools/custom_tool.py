@@ -21,7 +21,7 @@ class PDFSearchTool(BaseTool):
         "Searches for a keyword in a PDF file and returns the page number"
     )
 
-    def _run(self, pdf_path: str, keyword: str) -> int:
+    def _run(self, solution_path: str, keyword: str) -> int:
         reader= PdfReader(solution_path)
         for i, page in enumerate(reader.pages):
             text= page.extract_text()
