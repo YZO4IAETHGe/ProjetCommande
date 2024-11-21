@@ -64,7 +64,7 @@ class CustomerServiceCrew:
     def analyze_filter_task(self) -> Task:
         """Task to filter the mail."""
         return Task(
-            config=self.tasks_config['analyze_filter_task'],
+            config=self.tasks_config['filter_request_task'],
             tools=[],
             agent=self.client_request_filter_agent())
 
