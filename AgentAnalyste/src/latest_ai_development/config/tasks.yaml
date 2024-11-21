@@ -5,6 +5,13 @@ analyze_request_task:
     Extracted keywords about radiator issues and a summary of the customer's needs.
   agent: client_request_analysis_agent
 
+filter_request_task:
+  description: >
+    Analyze the email to determine if it describes an issue encountered by the customer (SAV-related) or if it is unrelated. Indicate whether it is an SAV email or not.
+  expected_output: >
+    Return only one word: SAV or notSAV
+  agent: client_request_filter_agent
+
 search_document_task:
   description: >
     Search the document database for relevant documents based on the keywords and context provided by the analysis of the customer's request located at {solution_path} .
