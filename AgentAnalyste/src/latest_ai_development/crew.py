@@ -23,6 +23,16 @@ class CustomerServiceCrew:
             config=self.agents_config['document_search_agent'],
             verbose=True
         )
+    
+    @agent
+    def client_request_filter_agent(self) -> Agent:
+        """Agent for filtering SAV mail."""
+        return Agent(
+            #llm=LLM(model="ollama/llama3.1", base_url="http://localhost:11434"),
+            config=self.agents_config['client_request_filter_agent'],
+            verbose=True
+        )
+
 
     @agent
     def client_request_analysis_agent(self) -> Agent:
@@ -59,6 +69,14 @@ class CustomerServiceCrew:
             tools=[],
             agent=self.client_request_analysis_agent()
         )
+
+    @task
+    def analyze_filter_task(self) -> Task:
+        """Task to filter the mail."""
+        return Task(
+            config=self.tasks_config['analyze_filter_task'],
+            tools=[],
+            agent=self.client_request_filter_agent())
 
     @task
     def search_document_task(self) -> Task:
