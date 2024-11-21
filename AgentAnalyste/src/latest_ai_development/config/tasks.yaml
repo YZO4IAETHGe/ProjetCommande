@@ -8,7 +8,7 @@ analyze_request_task:
 
 filter_request_task:
   description: >
-    Analyze the email to determine if it describes an issue encountered by the customer (SAV-related) or if
+    Analyze the email located at {pdf_path} to determine if it describes an issue encountered by the customer (SAV-related) or if
     it is unrelated. Indicate whether it is an SAV email or not.
   expected_output: >
     Return only one word: SAV or notSAV
@@ -24,14 +24,14 @@ search_document_task:
 
 retrieve_document_content_task:
   description: >
-    Extract specific content from the identified documents that addresses the customer's issue.
+    Extract specific content from the identified documents located at {solution_path} that addresses the customer's issue.
   expected_output: >
     Relevant document sections or excerpts.
   agent: document_search_agent
 
 formulate_response_task:
   description: >
-    Draft a clear and concise response for the customer, using the content extracted from the documents.
+    Draft a clear and concise response for the customer, using the content extracted from the document.
   expected_output: >
     A structured, customer-friendly response that directly addresses the query.
   agent: response_formulation_agent
