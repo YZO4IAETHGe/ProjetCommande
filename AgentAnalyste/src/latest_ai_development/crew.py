@@ -60,16 +60,6 @@ class CustomerServiceCrew:
             config=self.agents_config['quality_assurance_agent'],
             verbose=True
         )
-
-    @task
-    def analyze_request_task(self) -> Task:
-        """Task to analyze the customer's query for main issues and keywords."""
-        return Task(
-            config=self.tasks_config['analyze_request_task'],
-            tools=[],
-            agent=self.client_request_analysis_agent()
-        )
-
     @task
     def analyze_filter_task(self) -> Task:
         """Task to filter the mail."""
@@ -78,6 +68,16 @@ class CustomerServiceCrew:
             tools=[],
             agent=self.client_request_filter_agent())
 
+    @task
+    def analyze_request_task(self) -> Task:
+        """Task to analyze the customer's query for main issues and keywords."""
+        return Task(
+            config=self.tasks_config['analyze_request_task'],
+            tools=[],
+            agent=self.client_request_analysis_agent(),
+            context=[self.analyze_filter_task()]
+        )
+    
     @task
     def search_document_task(self) -> Task:
         """Task to search for relevant documents based on keywords and context."""
