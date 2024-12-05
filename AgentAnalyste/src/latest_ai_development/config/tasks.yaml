@@ -11,7 +11,7 @@ filter_request_task:
     Analyze the email located at {pdf_path} to determine if it describes an issue encountered by the customer (SAV-related) or if
     it is unrelated. Indicate whether it is an SAV email or not.
   expected_output: >
-    Return only one word: SAV or notSAV
+    Return only one word: SAV or notSAV.
   agent: client_request_filter_agent
 
 search_document_task:
@@ -42,3 +42,18 @@ quality_check_task:
   expected_output: >
     Verified and finalized response ready for customer delivery.
   agent: quality_assurance_agent
+
+send_email_task:
+  description: >
+    Sends an email with the final response to the client mail based on the output 
+    from the quality check task.
+  expected_output: >
+    A confirmation message indicating the email has been sent or failed.
+  agent: email_response_agent
+
+retrieve_client_email_task:
+  description: >
+    Identify and extract the client's email address from the provided email content located at {pdf_path}.
+  expected_output: >
+    Extracted email address of the client for further processing and communication.
+  agent: email_extraction_agent
