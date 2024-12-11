@@ -2,6 +2,7 @@ from crewai import Agent, Crew, Process, Task, LLM
 from crewai.project import CrewBase, agent, crew, task  
 from crewai_tools import PDFSearchTool  # Assuming this tool is needed for document search
 from crewai_tools import PDFSearchTool
+from transformers import AutoTokenizer, AutoModelForCausalLM
 #from latest_ai_development.tools.custom_tool import PDFReaderTool
 #from latest_ai_development.tools.custom_tool import PDFSearchTool
 
@@ -13,7 +14,14 @@ pdf_search_tool = PDFSearchTool()
 pdf_reader_tool = PDFReaderTool()
 
 OLLAMA_LLM = LLM(model="ollama/llama3.2", base_url="http://localhost:11434")
-OLLAMA_LLM_1b = LLM(model="ollama/llama3.2", base_url="http://localhost:11434")
+#OLLAMA_LLM_1b = LLM(model="ollama/llama3.2:1b", base_url="http://localhost:11434")
+
+tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen2.5-72B")
+model = AutoModelForCausalLM.from_pretrained("Qwen/Qwen2.5-72B")
+
+#QWEN_72B = LLM(model=model, tokenizer=tokenizer)
+OLLAMA_LLM_1b = LLM(model=model, tokenizer=tokenizer)
+
 
 @CrewBase
 class CustomerServiceCrew:
@@ -23,7 +31,7 @@ class CustomerServiceCrew:
     def email_response_agent(self) -> Agent:
         """Agent for sending the response email to the customer."""
         return Agent(
-            #llm=OLLAMA_LLM_1b,
+            llm=OLLAMA_LLM_1b,
             config=self.agents_config['email_response_agent'],
             verbose=True
         )
@@ -33,7 +41,7 @@ class CustomerServiceCrew:
     def document_search_agent(self) -> Agent:
         """Agent for retrieving and analyzing documents."""
         return Agent(
-            #llm=OLLAMA_LLM_1b,
+            llm=OLLAMA_LLM_1b,
             config=self.agents_config['document_search_agent'],
             verbose=True
         )
@@ -42,7 +50,7 @@ class CustomerServiceCrew:
     def client_request_filter_agent(self) -> Agent:
         """Agent for filtering SAV mail."""
         return Agent(
-            #llm=OLLAMA_LLM_1b,
+            llm=OLLAMA_LLM_1b,
             config=self.agents_config['client_request_filter_agent'],
             verbose=True
         )
@@ -52,7 +60,7 @@ class CustomerServiceCrew:
     def client_request_analysis_agent(self) -> Agent:
         """Agent for analyzing customer requests to understand their needs."""
         return Agent(
-            #llm=OLLAMA_LLM_1b,
+            llm=OLLAMA_LLM_1b,
             config=self.agents_config['client_request_analysis_agent'],
             verbose=True
         )
@@ -61,7 +69,7 @@ class CustomerServiceCrew:
     def response_formulation_agent(self) -> Agent:
         """Agent for formulating and refining responses based on retrieved information."""
         return Agent(
-            #llm=OLLAMA_LLM_1b,
+            llm=OLLAMA_LLM_1b,
             config=self.agents_config['response_formulation_agent'],
             verbose=True
         )
@@ -70,7 +78,7 @@ class CustomerServiceCrew:
     def quality_assurance_agent(self) -> Agent:
         """Agent for quality control to ensure accuracy and relevance in responses."""
         return Agent(
-            #llm=OLLAMA_LLM_1b,
+            llm=OLLAMA_LLM_1b,
             config=self.agents_config['quality_assurance_agent'],
             verbose=True
         )
@@ -79,7 +87,7 @@ class CustomerServiceCrew:
     def email_extraction_agent(self) -> Agent:
         """Agent for extracting email addresses from documents."""
         return Agent(
-            #llm=OLLAMA_LLM_1b,
+            llm=OLLAMA_LLM_1b,
             config=self.agents_config['email_extraction_agent'],
             verbose=True
         )
