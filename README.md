@@ -21,6 +21,8 @@
    Vérifiez la version :
   ```bash
   ollama version
+  ```
+  Ajouter le chemin d'Ollama au PATH
 - **CrewAI** : Installez Crewai
   ```bash
   pip install 'crewai[tools]'
@@ -28,7 +30,7 @@
 ## Configuration
  - Téléchargez un modèle compatible avec Ollama : 
    ```bash
-   ollama pull lama2
+   ollama pull lama3
  - Vérifier que le modèle est bien téléchargé :
     ```bash
     ollama list
@@ -41,7 +43,7 @@
 > Modifiez les variables dans .env :
  ```bash
  MODEL_API_URL=http://localhost:11434
- MODEL_NAME=llama2
+ MODEL_NAME=llama3
 ```
 ## Cloner le dossier git
 ```bash
