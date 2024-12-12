@@ -42,6 +42,28 @@
  ```bash
  MODEL_API_URL=http://localhost:11434
  MODEL_NAME=llama2
+```
+## Installer les Dépendances
+- Installer Poetry
+``` bash
+ppip install poetry
+```
+- Installer les dépendances du projet  **dans le dossier du projet** :
+``` bash
+poetry lock && poetry install
+```
+## Exécuter le Projet en Local
+- Lancer Ollama :
+``` bash
+ollama serve
+```bash
+poetry run 
+```
+
+
+
+
+
 
     
 
