@@ -45,7 +45,7 @@
 ```
 ## Cloner le dossier git
 ```bash
-git clone <>
+git clone <https://github.com/YZO4IAETHGe/ProjetCommande>
 ## Installer les Dépendances
 - Installer Poetry
 ``` bash
