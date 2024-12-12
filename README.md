@@ -46,7 +46,7 @@
 ## Installer les Dépendances
 - Installer Poetry
 ``` bash
-ppip install poetry
+pip install poetry
 ```
 - Installer les dépendances du projet  **dans le dossier du projet** :
 ``` bash
