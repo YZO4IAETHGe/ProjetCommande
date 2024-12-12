@@ -59,7 +59,7 @@ ollama serve
 ```
 - Lancer le script CrewAI ( Exécutez le script principal avec Poetry ) : 
 ```bash
-poetry run 
+poetry run latest_ai_development
 ```
 
 
