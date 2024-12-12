@@ -56,6 +56,8 @@ poetry lock && poetry install
 - Lancer Ollama :
 ``` bash
 ollama serve
+```
+- Lancer le script CrewAI ( Exécutez le script principal avec Poetry ) : 
 ```bash
 poetry run 
 ```
