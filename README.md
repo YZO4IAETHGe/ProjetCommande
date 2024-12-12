@@ -43,6 +43,9 @@
  MODEL_API_URL=http://localhost:11434
  MODEL_NAME=llama2
 ```
+## Cloner le dossier git
+```bash
+git clone <>
 ## Installer les Dépendances
 - Installer Poetry
 ``` bash
