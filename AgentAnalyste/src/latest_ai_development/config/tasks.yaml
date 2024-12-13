@@ -1,7 +1,7 @@
 analyze_request_task:
   description: >
     Analyze the customer's query to determine the main issue and relevant keywords about radiator
-    issues on the document retrieval from the mail located at {pdf_path} .
+    issues on the email.
   expected_output: >
     Extracted keywords about radiator issues and a summary of the customer's needs.
   agent: client_request_analysis_agent
@@ -57,3 +57,31 @@ retrieve_client_email_task:
   expected_output: >
     Extracted email address of the client for further processing and communication.
   agent: email_extraction_agent
+
+weird_expressions_task:
+  description: >
+    Count the proporion of weird expressions resembling to a scam in the email
+  expected_output: >
+    Proportion of weird expressions
+  agent: text_analysis_agent
+
+link_verification_task:
+  description: >
+    Checks the security of links in the email, as phishing attacks often include malicious links or dangerous files.
+  expected_output: >
+    Proportion of dangerous link
+  agent: link_verification_agent
+
+reporting_task:
+  description: >
+    Review the context you got and estimate the probability that the given document is a fraud
+  expected_output: >
+    A number between 0 and 1 representing the probability of fraud of the given document
+  agent: fraud_probability_calculator_agent
+
+read_task:
+  description: >
+    Read the content of the email located at {pdf_path} 
+  expected_output: >
+    Text of the mail
+  agent: text_analysis_agent

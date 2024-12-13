@@ -11,19 +11,48 @@ from latest_ai_development.tools.custom_tool import EmailSenderTool
 
 pdf_search_tool = PDFSearchTool()
 pdf_reader_tool = PDFReaderTool()
-
+#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
 OLLAMA_LLM = LLM(model="ollama/llama3.1", base_url="http://localhost:11434")
 OLLAMA_LLM_1b = LLM(model="ollama/llama3.2:1b", base_url="http://localhost:11434")
+# Load model directly
+#from transformers import AutoTokenizer, AutoModelForCausalLM
 
+#tokenizer = AutoTokenizer.from_pretrained("microsoft/Phi-3.5-mini-instruct", trust_remote_code=True)
+#model = AutoModelForCausalLM.from_pretrained("microsoft/Phi-3.5-mini-instruct", trust_remote_code=True)
+llm=LLM(model="ollama/qwen2.5:14b",
+        base_url="http://localhost:11434")
 @CrewBase
 class CustomerServiceCrew:
     """Crew for Customer Service Operations"""
+    @agent
+    def text_analysis_agent(self) -> Agent:
+        return Agent(
+			llm=llm,
+			config=self.agents_config['text_analysis_agent'], # Example of custom tool, loaded on the beginning of file
+			verbose=True
+		)
 
+    @agent
+    def link_verification_agent(self) -> Agent:
+        return Agent(
+			llm=llm,
+			config=self.agents_config['link_verification_agent'],
+			verbose=True
+
+		)
+	
+    @agent
+    def fraud_probability_calculator_agent(self) -> Agent:
+        return Agent(
+			llm=llm,
+			config=self.agents_config['fraud_probability_calculator_agent'],
+			verbose=True
+		)
     @agent
     def email_response_agent(self) -> Agent:
         """Agent for sending the response email to the customer."""
         return Agent(
-            llm=OLLAMA_LLM_1b,
+            llm=llm,
             config=self.agents_config['email_response_agent'],
             verbose=True
         )
@@ -33,7 +62,7 @@ class CustomerServiceCrew:
     def document_search_agent(self) -> Agent:
         """Agent for retrieving and analyzing documents."""
         return Agent(
-            llm=OLLAMA_LLM_1b,
+            llm=llm,
             config=self.agents_config['document_search_agent'],
             verbose=True
         )
@@ -42,7 +71,7 @@ class CustomerServiceCrew:
     def client_request_filter_agent(self) -> Agent:
         """Agent for filtering SAV mail."""
         return Agent(
-            llm=OLLAMA_LLM_1b,
+            llm=llm,
             config=self.agents_config['client_request_filter_agent'],
             verbose=True
         )
@@ -52,7 +81,7 @@ class CustomerServiceCrew:
     def client_request_analysis_agent(self) -> Agent:
         """Agent for analyzing customer requests to understand their needs."""
         return Agent(
-            llm=OLLAMA_LLM_1b,
+            llm=llm,
             config=self.agents_config['client_request_analysis_agent'],
             verbose=True
         )
@@ -61,7 +90,7 @@ class CustomerServiceCrew:
     def response_formulation_agent(self) -> Agent:
         """Agent for formulating and refining responses based on retrieved information."""
         return Agent(
-            llm=OLLAMA_LLM_1b,
+            llm=llm,
             config=self.agents_config['response_formulation_agent'],
             verbose=True
         )
@@ -70,7 +99,7 @@ class CustomerServiceCrew:
     def quality_assurance_agent(self) -> Agent:
         """Agent for quality control to ensure accuracy and relevance in responses."""
         return Agent(
-            llm=OLLAMA_LLM_1b,
+            llm=llm,
             config=self.agents_config['quality_assurance_agent'],
             verbose=True
         )
@@ -79,10 +108,40 @@ class CustomerServiceCrew:
     def email_extraction_agent(self) -> Agent:
         """Agent for extracting email addresses from documents."""
         return Agent(
-            lm=OLLAMA_LLM_1b,
+            llm=llm,
             config=self.agents_config['email_extraction_agent'],
             verbose=True
         )
+    
+    @task
+    def read_task(self) -> Task:
+        return Task(
+			config=self.tasks_config['read_task'],
+			tools=[pdf_reader_tool]
+		)
+	
+    @task
+    def weird_expressions_task(self) -> Task:
+        return Task(
+			config=self.tasks_config['weird_expressions_task'],
+			context=[self.read_task()]
+			
+		)
+	
+    @task
+    def link_verification_task(self) -> Task:
+        return Task(
+			config=self.tasks_config['link_verification_task'],
+			context=[self.read_task()]
+			
+		)
+	
+    @task
+    def reporting_task(self) -> Task:
+        return Task(
+			config=self.tasks_config['reporting_task'],
+			context=[self.weird_expressions_task(),self.link_verification_task()]
+		)
 
 
     @task
@@ -91,16 +150,17 @@ class CustomerServiceCrew:
         return Task(
             config=self.tasks_config['filter_request_task'],
             tools=[pdf_reader_tool],
-            agent=self.client_request_filter_agent())
-
+            agent=self.client_request_filter_agent(),
+            context=[self.reporting_task()])
+    
     @task
     def analyze_request_task(self) -> Task:
         """Task to analyze the customer's query for main issues and keywords."""
         return Task(
             config=self.tasks_config['analyze_request_task'],
-            tools=[pdf_reader_tool],
+            #tools=[pdf_reader_tool],
             agent=self.client_request_analysis_agent(),
-            context=[self.analyze_filter_task()]
+            context=[self.analyze_filter_task(),self.read_task()]
         )
     
     @task
@@ -108,7 +168,7 @@ class CustomerServiceCrew:
         """Task to search for relevant documents based on keywords and context."""
         return Task(
             config=self.tasks_config['search_document_task'],
-            tools=[pdf_search_tool],
+            tools=[pdf_reader_tool],
             agent=self.document_search_agent(),
             context=[self.analyze_request_task()]
         )
@@ -118,7 +178,7 @@ class CustomerServiceCrew:
         """Task to retrieve specific content from identified documents."""
         return Task(
             config=self.tasks_config['retrieve_document_content_task'],
-            tools=[pdf_search_tool],
+            tools=[pdf_reader_tool],
             agent=self.document_search_agent(),
             context=[self.search_document_task()]
         )
