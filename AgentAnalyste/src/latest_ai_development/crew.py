@@ -2,6 +2,7 @@ from crewai import Agent, Crew, Process, Task, LLM
 from crewai.project import CrewBase, agent, crew, task  
 from crewai_tools import PDFSearchTool  # Assuming this tool is needed for document search
 from crewai_tools import PDFSearchTool
+from transformers import AutoTokenizer, AutoModelForCausalLM
 #from latest_ai_development.tools.custom_tool import PDFReaderTool
 #from latest_ai_development.tools.custom_tool import PDFSearchTool
 
