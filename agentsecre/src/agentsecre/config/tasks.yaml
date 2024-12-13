@@ -1,0 +1,48 @@
+email_parsing_task:
+  description: >
+    Parse the email to extract relevant event details such as title, date, time, location, and participants.
+    Focus on identifying structured and unstructured data to form a clear event representation.
+  expected_output: >
+    A JSON object with extracted fields:
+    - event_title: string
+    - date: YYYY-MM-DD
+    - time: HH:MM
+    - location: string
+    - participants: list of email addresses or names
+  agent: email_parser_agent
+
+event_conflict_checking_task:
+  description: >
+    Verify if the proposed event conflicts with any existing calendar entries.
+    Suggest alternative times if conflicts are found.
+  expected_output: >
+    - Conflict status: "No conflict" or "Conflict found"
+    - If conflict, a list of suggested alternative times in HH:MM format.
+  agent: event_conflict_checker_agent
+
+event_scheduling_task:
+  description: >
+    Schedule the event in the user's calendar using the provided details.
+    Ensure the event is added to the correct calendar without conflicts.
+  expected_output: >
+    Confirmation of event creation with details:
+    - Event ID
+    - Confirmation message: "Event successfully scheduled"
+  agent: calendar_event_scheduler_agent
+
+notification_sending_task:
+  description: >
+    Notify the user and participants about the scheduled event.
+    Include all event details and provide options to confirm or decline participation.
+  expected_output: >
+    Confirmation of notifications sent, with:
+    - List of participants notified
+    - Status of notification delivery: "Delivered" or "Failed"
+  agent: notification_sender_agent
+
+read_task:
+  description: >
+    Read the content of the mail located at {pdf_path}
+  expected_output: >
+    Text of the mail
+  agent: email_parser_agent
