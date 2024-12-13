@@ -1,14 +1,16 @@
-[project]
+[tool.poetry]
 name = "agentsecre"
 version = "0.1.0"
 description = "agentsecre using crewAI"
-authors = [{ name = "Your Name", email = "you@example.com" }]
-requires-python = ">=3.10,<=3.13"
-dependencies = [
-    "crewai[tools]>=0.85.0,<1.0.0"
-]
+authors = ["Your Name <you@example.com>" ]
 
-[project.scripts]
+[tool.poetry.dependencies]
+python = ">=3.10,<=3.13"
+crewai = { extras = ["tools"], version = ">=0.61.0,<1.0.0" }
+google-auth-oauthlib = "^1.2.1"
+google-api-python-client = "^2.155.0"
+
+[tool.poetry.scripts]
 agentsecre = "agentsecre.main:run"
 run_crew = "agentsecre.main:run"
 train = "agentsecre.main:train"
@@ -16,5 +18,5 @@ replay = "agentsecre.main:replay"
 test = "agentsecre.main:test"
 
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
