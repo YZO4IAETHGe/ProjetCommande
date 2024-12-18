@@ -35,37 +35,18 @@
     ```bash
     ollama list
  - Configurer l’environnement :
- > Copiez le fichier .env.example
- ```bash
- cp .env.example .env
  ```
-
-> Modifiez les variables dans .env :
+> Ajouter une clé API pour OPENAI dans .env :
  ```bash
- MODEL_API_URL=http://localhost:11434
- MODEL_NAME=llama3
+ OPENAI_API_KEY=clé
 ```
 ## Cloner le dossier git
 ```bash
 git clone https://github.com/YZO4IAETHGe/ProjetCommande
 ```
-## Installer les Dépendances
-- Installer Poetry
-``` bash
-pip install poetry
-```
-- Installer les dépendances du projet  **dans le dossier du projet** :
-``` bash
-poetry lock && poetry install
-```
-## Exécuter le Projet en Local
-- Lancer Ollama :
-``` bash
-ollama serve
-```
-- Lancer le script CrewAI ( Exécutez le script principal avec Poetry ) : 
+- Lancer le script CrewAI: 
 ```bash
-poetry run latest_ai_development
+crewai run (dans le dossier AgentAnalyste
 ```
 
 
