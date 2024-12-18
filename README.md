@@ -43,9 +43,10 @@ git clone https://github.com/YZO4IAETHGe/ProjetCommande
 > Ajouter une clé API pour OPENAI dans .env :
  OPENAI_API_KEY=clé
 ```
-- Lancer le script CrewAI: 
+- Lancer le script CrewAI (dans le dossier AgentAnalyste): 
 ```bash
-crewai run (dans le dossier AgentAnalyste)
+crewai update (la première fois)
+crewai run 
 ```
 
 
