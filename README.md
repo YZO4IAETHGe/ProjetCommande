@@ -25,7 +25,7 @@
   Ajouter le chemin d'Ollama au PATH
 - **CrewAI** : Installez Crewai
   ```bash
-  pip install 'crewai[tools]'
+  pip install crewai[tools]
 
 ## Configuration
  - Téléchargez un modèle compatible avec Ollama : 
