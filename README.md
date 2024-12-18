@@ -34,15 +34,15 @@
  - Vérifier que le modèle est bien téléchargé :
     ```bash
     ollama list
+  ## Cloner le dossier git
+```bash
+git clone https://github.com/YZO4IAETHGe/ProjetCommande
+```
  - Configurer l’environnement :
  ```
 > Ajouter une clé API pour OPENAI dans .env :
  ```bash
  OPENAI_API_KEY=clé
-```
-## Cloner le dossier git
-```bash
-git clone https://github.com/YZO4IAETHGe/ProjetCommande
 ```
 - Lancer le script CrewAI: 
 ```bash
