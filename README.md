@@ -1,4 +1,4 @@
-# Agent local répondant automatiquement aux mails - Utilisation avec Ollama
+# Agent local répondant automatiquement aux mails - Utilisation avec Ollama (en local) ou GPT 
 
 ## Introduction
 
