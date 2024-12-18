@@ -1,14 +1,8 @@
 from crewai import Agent, Crew, Process, Task, LLM
 from crewai.project import CrewBase, agent, crew, task  
-from crewai_tools import PDFSearchTool  # Assuming this tool is needed for document search
-from crewai_tools import PDFSearchTool
-from transformers import AutoTokenizer, AutoModelForCausalLM
-#from latest_ai_development.tools.custom_tool import PDFReaderTool
-#from latest_ai_development.tools.custom_tool import PDFSearchTool
-
-from latest_ai_development.tools.custom_tool import PDFReaderTool
-from latest_ai_development.tools.custom_tool import PDFSearchTool
-from latest_ai_development.tools.custom_tool import EmailSenderTool
+from crewai_tools import PDFSearchTool, PDFSearchTool
+#from transformers import AutoTokenizer, AutoModelForCausalLM
+from latest_ai_development.tools.custom_tool import PDFReaderTool, PDFSearchTool, EmailSenderTool
 
 pdf_search_tool = PDFSearchTool()
 pdf_reader_tool = PDFReaderTool()
@@ -16,12 +10,12 @@ pdf_reader_tool = PDFReaderTool()
 OLLAMA_LLM = LLM(model="ollama/llama3.1", base_url="http://localhost:11434")
 OLLAMA_LLM_1b = LLM(model="ollama/llama3.2:1b", base_url="http://localhost:11434")
 # Load model directly
-#from transformers import AutoTokenizer, AutoModelForCausalLM
 
-#tokenizer = AutoTokenizer.from_pretrained("microsoft/Phi-3.5-mini-instruct", trust_remote_code=True)
-#model = AutoModelForCausalLM.from_pretrained("microsoft/Phi-3.5-mini-instruct", trust_remote_code=True)
-llm=LLM(model="ollama/qwen2.5:14b",
-        base_url="http://localhost:11434")
+#tokenizer = AutoTokenizer.from_pretrained("mistralai/Mixtral-8x22B-v0.1")
+#model = AutoModelForCausalLM.from_pretrained("mistralai/Mixtral-8x22B-v0.1")
+
+#llm=LLM(model=model, tokenizer=tokenizer)
+
 @CrewBase
 class CustomerServiceCrew:
     """Crew for Customer Service Operations"""
