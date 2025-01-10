@@ -8,7 +8,9 @@
 
 > CrewAI facilite la collaboration d'agents clés dans la gestion des mails. Dans cet exemple, les agents vont travailler ensemble pour analyser les mails reçus et potentiellement rédiger une réponse tirée d'une base de données.
 
-![Agent sécurité](https://github.com/user-attachments/assets/339ef2ea-26c7-4e46-a5a3-8dd5073f8d8e)
+
+![Agent sécurité](https://github.com/user-attachments/assets/5893a013-816f-41b6-8f5e-f21dec4df30e)
+
 
 ## Prérequis
 - **Exécution des commandes sous Windows** : Ouvrir une invite de commandes ou PowerShell
