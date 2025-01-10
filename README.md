@@ -11,11 +11,16 @@
 ![Agent sécurité](https://github.com/user-attachments/assets/339ef2ea-26c7-4e46-a5a3-8dd5073f8d8e)
 
 ## Prérequis
+- **Exécution des commandes sous Windows** : Ouvrir une invite de commandes ou PowerShell
 
-- **Python** : Version 3.10 à 3.13.
-  Vérifiez la version avec la commande :
+- **Python** : Installez Python
+1. Rendez-vous sur le (site officiel de Python)[https://www.python.org/downloads/].
+2. Téléchargez la version recommandée pour votre système d’exploitation.
+3. Assurez-vous de cocher la case "Add Python to PATH" lors de l’installation sous Windows.
+4. Version 3.10 à 3.13Vérifiez la version de python est entre 3.10 à 3.13 :
   ```bash
   python3 --version
+```
 - **Ollama** :
    Installez la dernière [version](https://ollama.com/).
    Vérifiez la version :
@@ -24,13 +29,15 @@
   ```
   Ajouter le chemin d'Ollama au PATH
 - **CrewAI** : Installez Crewai
+1. Ouvrir une Invite de commandes ou PowerShell (sur Windows)
   ```bash
   pip install crewai[tools]
+```
 
 ## Configuration
  - Téléchargez un modèle compatible avec Ollama : 
    ```bash
-   ollama pull lama3
+   ollama pull llama3
  - Vérifier que le modèle est bien téléchargé :
     ```bash
     ollama list
@@ -38,6 +45,10 @@
 ```bash
 git clone https://github.com/YZO4IAETHGe/ProjetCommande
 ```
+ - Récupérer une clé API OpenAI:
+1. Connectez-vous sur la [page OpenAI](https://platform.openai.com/docs/overview)
+2. Allez dans la section **API Keys**
+3. Cliquez sur **Créer une nouvelle clé secrète**  
  - Configurer l’environnement :
  ```
 > Ajouter une clé API pour OPENAI dans .env :
