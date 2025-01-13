@@ -51,7 +51,7 @@ pip show crewai
 ## Utilisation du crew avec Ollama ou GPT 
 > Le code est par défault écrit de sorte à fonctionnner avec ChatGPT, il faut pour cela rajouter une clé API dans le dossier .env (étape détaillée dans la prochaine partie). Le code est cependant théoriquement éxectuable de manière locale avec un modèle de Ollama comme llama3 si la puissance de calcul de votre machine est assez élevée. 
 
-> Pour cela il faut décommenter l'ensemble des "llm" compris dans le script de chaque agent 
+> Pour cela il faut décommenter l'ensemble des "llm" compris dans le script de chaque agent. Voici  l'emplacement du dossier en question à modifier ProjetCommande/AgentAnalyste/src/latest_ai_development/crew.py
 ## Cloner et éxecuter  le dossier git
 ```bash
 git clone https://github.com/YZO4IAETHGe/ProjetCommande
