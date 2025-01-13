@@ -86,8 +86,7 @@ crewai run
 1. Le programme contient une base de donnée ici sur les radiateurs (au format PDF). Cette base de donnée est modifiable et doit correspondre aux types des mails qui vont être traités par l'équipe d'agents
 2. Par la suite, l'équipe d'agents va demander un mail auquel répondre (format PDF et **contenant l'adresse mail de l'expéditeur**), c'est ainsi que le mail rédigé par l'équipe sera envoyé au bon destinataire. 
 ## Problèmes possibles 
-Date 10/01/2024 : Problème avec la dépendance uvloop
-Correction : 
+Date 10/01/2024 : Résolution du problème avec la dépendance uvloop
 ```
 pip install litellm==1.57.4
 ```
